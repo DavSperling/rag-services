@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+psycopg[binary]
+pgvector
+sentence-transformers
+pypdf
+anthropic
+python-dotenv
+pytest
