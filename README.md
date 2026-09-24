@@ -1,6 +1,6 @@
 # RAG Services 🚀
 
-End-to-end **RAG (Retrieval-Augmented Generation)** service built with Python. This project provides a full end-to-end pipeline: PDF ingestion and preprocessing, sliding-window chunking with precise source-page tracking, dense vector embeddings with Sentence Transformers, vector storage and HNSW indexing in PostgreSQL using `pgvector`, low-latency semantic search, and augmented answer generation via the Anthropic Claude API, served through FastAPI.
+End-to-end **RAG (Retrieval-Augmented Generation)** service built with Python. This project provides a full end-to-end pipeline: PDF ingestion and preprocessing, sliding-window chunking with precise source-page tracking, dense vector embeddings with Sentence Transformers, vector storage and HNSW indexing in PostgreSQL using `pgvector`, low-latency semantic search, and augmented answer generation via the Anthropic Claude API, served through a robust FastAPI REST backend.
 
 ---
 
@@ -12,6 +12,7 @@ End-to-end **RAG (Retrieval-Augmented Generation)** service built with Python. T
 - **Database Driver**: [psycopg 3](https://www.psycopg.org/psycopg3/) with `pgvector-python` support
 - **PDF Extraction & Parsing**: [pypdf](https://pypdf.readthedocs.io/)
 - **Embeddings**: [sentence-transformers](https://www.sbert.net/) (`BAAI/bge-small-en-v1.5`, 384 dimensions)
+- **Data Validation**: [Pydantic v2](https://docs.pydantic.dev/)
 - **LLM & Generation**: [Anthropic Python SDK](https://github.com/anthropics/anthropic-sdk-python) (Claude)
 - **Testing**: [pytest](https://docs.pytest.org/)
 
@@ -21,14 +22,15 @@ End-to-end **RAG (Retrieval-Augmented Generation)** service built with Python. T
 
 ```text
 rag-services/
-├── app/                  # FastAPI application and RAG core logic
+├── app/
+│   └── main.py           # FastAPI application (endpoints: /health, /ingest)
 ├── data/                 # Raw source documents (e.g., p538.pdf)
 ├── scripts/              # Data pipeline and utility scripts
 │   ├── check_db.py       # Validates DB connection and pgvector extension
-│   ├── chunk.py          # PDF text extraction, cleaning, and sliding-window chunking
+│   ├── chunking.py       # PDF text extraction, cleaning, and sliding-window chunking
 │   ├── embed.py          # Dense vector embedding generation using BGE-small
 │   ├── init_db.py        # Applies schema.sql to initialize tables and HNSW index
-│   ├── ingest.py         # Full ingestion pipeline: chunks, embeds, and upserts into pgvector
+│   ├── ingest.py         # Ingestion logic: chunks, embeds, and upserts into pgvector
 │   ├── peek.py           # Quick document inspection utility
 │   ├── schema.sql        # PostgreSQL DDL schema with HNSW index definition
 │   └── search.py         # Semantic similarity search with latency benchmarking
@@ -126,7 +128,7 @@ Extracts, cleans, chunks, embeds, and stores document segments in PostgreSQL wit
 python scripts/ingest.py
 ```
 
-- **Preprocessing & Chunking (`scripts/chunk.py`)**: Word-level sliding window (`chunk_size=300`, `overlap=50`) preserving sentence flow and mapping chunks back to original page numbers.
+- **Preprocessing & Chunking (`scripts/chunking.py`)**: Word-level sliding window (`chunk_size=300`, `overlap=50`) preserving sentence flow and mapping chunks back to original page numbers.
 - **Embedding Generation (`scripts/embed.py`)**: Computes normalized dense vectors using `BAAI/bge-small-en-v1.5`.
 - **Bulk Upsert (`scripts/ingest.py`)**: Batched insert using `ON CONFLICT (source, chunk_index) DO UPDATE` to ensure idempotency.
 
@@ -152,9 +154,9 @@ python scripts/search.py
 
 ---
 
-## 📡 Running the API (FastAPI)
+## 📡 Running the REST API (FastAPI)
 
-Launch the RAG service backend with Uvicorn:
+Launch the RAG backend server with Uvicorn:
 
 ```bash
 uvicorn app.main:app --reload --port 8000
@@ -162,6 +164,47 @@ uvicorn app.main:app --reload --port 8000
 
 - **Interactive Swagger UI**: [http://localhost:8000/docs](http://localhost:8000/docs)
 - **ReDoc Alternative**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+### API Endpoints
+
+#### 1. Health Check: `GET /health`
+Verifies service status and live database connectivity.
+
+```bash
+curl -X GET http://localhost:8000/health
+```
+
+**Response (`200 OK`):**
+```json
+{
+  "status": "ok",
+  "db": "ok"
+}
+```
+
+*If PostgreSQL is unreachable, returns `{"status": "degraded", "db": "down"}`.*
+
+---
+
+#### 2. Document Ingestion: `POST /ingest`
+Triggers parsing, chunking, embedding, and storing chunks into PostgreSQL for a specified PDF.
+
+```bash
+curl -X POST http://localhost:8000/ingest \
+  -H "Content-Type: application/json" \
+  -d '{"path": "data/p538.pdf"}'
+```
+
+**Response (`200 OK`):**
+```json
+{
+  "chunks": 70
+}
+```
+
+**Security Safeguards:**
+- **`403 Forbidden`**: Path traversal guard — files outside the designated `data/` directory are rejected.
+- **`404 Not Found`**: Returned if the target PDF file does not exist.
 
 ---
 
@@ -183,6 +226,9 @@ pytest
 - [x] Vector storage and HNSW cosine index (`pgvector`)
 - [x] Idempotent bulk upsert pipeline
 - [x] Semantic vector similarity search with latency benchmarking
+- [x] FastAPI REST API setup with Uvicorn
+- [x] Live DB health check endpoint (`GET /health`)
+- [x] Secure ingestion endpoint (`POST /ingest`) with path traversal & existence checks
 - [ ] Contextual answer generation with Claude (Anthropic SDK)
-- [ ] FastAPI REST endpoints (`/ingest`, `/query`, `/health`)
+- [ ] Query REST endpoint (`POST /query`)
 - [ ] Reranking layer (Cross-Encoder / Cohere Rerank)
