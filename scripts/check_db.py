@@ -1,6 +1,10 @@
 import psycopg
+import os 
+from dotenv import load_dotenv
 
-DB_URL = "postgresql://rag:rag@localhost:5440/rag"
+load_dotenv()
+
+DB_URL = os.getenv("DATABASE_URL")
 
 with psycopg.connect(DB_URL) as conn:
     with conn.cursor() as cur:
