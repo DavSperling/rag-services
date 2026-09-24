@@ -1,5 +1,5 @@
 from sentence_transformers import SentenceTransformer
-from chunk import load_pdf
+from scripts.chunking import load_pdf
 
 model = SentenceTransformer("BAAI/bge-small-en-v1.5")
 
