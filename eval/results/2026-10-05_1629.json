@@ -1,0 +1,322 @@
+[
+  {
+    "id": "d01",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, **a fiscal year is 12 consecutive months ending on the last day of any month except December 31st.**\n\nAccording to the passages, if you are allowed to adopt a fiscal year, you must **consistently maintain your books and records and report your income and expenses** using the time period adopted.\n\nIt is worth noting that a fiscal year is distinct from a calendar year, which runs from January 1st through December 31st. Additionally, there is a special variation called a **52-53-week tax year**, which can be elected if you keep your books and records and report your income and expenses on that basis.",
+    "verdict": "correct",
+    "reason": "The answer contains the essential fact from the reference answer (fiscal year is 12 consecutive months ending on the last day of any month except December 31st) and adds accurate supplementary information without contradicting the reference."
+  },
+  {
+    "id": "d02",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, a **calendar year** for tax purposes is defined as:\n\n> **12 consecutive months beginning on January 1st and ending on December 31st.**\n\nIf you adopt the calendar year, you must **maintain your books and records and report your income and expenses from January 1st through December 31st** of each year.\n\nAdditionally, the context specifies that you **must** adopt the calendar year if any of the following apply:\n- You keep **no books or records**\n- You have **no annual accounting period**\n- Your present tax year does **not qualify as a fiscal year**\n- You are **required to use a calendar year** by a provision in the Internal Revenue Code or Treasury Regulations\n\nIt is also noted that generally, **anyone can adopt the calendar year**, but once adopted (e.g., if you later begin business as a sole proprietor, become a partner in a partnership, or become a shareholder in an S corporation), you must **continue to use the calendar year unless you obtain IRS approval to change it**.",
+    "verdict": "correct",
+    "reason": "The answer contains the essential fact from the reference answer (12 consecutive months beginning January 1st and ending December 31st) and adds accurate supplementary information about calendar year requirements and adoption rules without contradicting the reference definition."
+  },
+  {
+    "id": "d03",
+    "type": "direct",
+    "hit": true,
+    "answer": "## Short Tax Year\n\nBased on the provided context, a **short tax year** is defined as **a tax year of less than 12 months**.\n\nA short period tax return may be required when you (as a taxable entity):\n\n- **Are not in existence for an entire tax year**, or\n- **Change your accounting period**\n\n### Examples of When a Short Tax Year Applies:\n\n1. **New entity**: If a corporation is organized on July 1 and elects a calendar year, its first tax return will cover the short period from July 1 through December 31.\n2. **Dissolved entity**: If a calendar year corporation dissolves on July 23, its final return covers the short period from January 1 through July 23.\n3. **Death of an individual**: The decedent's final return is a short period return beginning January 1 and ending on the **date of death**. *(Note: If the individual dies on December 31, a full calendar-year return is required.)*\n\n> It is important to note that **tax on a short period return is figured differently** depending on the situation, and income tax for a short tax year **must generally be annualized**, though self-employment tax is figured on actual self-employment income for the short period.",
+    "verdict": "correct",
+    "reason": "The answer contains all essential facts from the reference answer (definition of short tax year as less than 12 months, and the two main reasons: entity not in existence for entire year or change in accounting period) and provides accurate supporting examples and details without contradicting the reference."
+  },
+  {
+    "id": "d04",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, a taxpayer **must adopt the calendar year** in the following cases:\n\n1. **They keep no books or records**\n2. **They have no annual accounting period**\n3. **Their present tax year does not qualify as a fiscal year**\n4. **They are required to use a calendar year by a provision in the Internal Revenue Code or Treasury Regulations**\n\nAdditionally, the context notes that **individuals generally must adopt the calendar year** as their tax year, unless the individual maintains his or her books and records on the basis of an adopted fiscal year.\n\n*(Sources: p538.pdf, pages 2 and 4)*",
+    "verdict": "correct",
+    "reason": "The answer contains all essential facts from the reference answer regarding when a taxpayer must adopt the calendar year, and adds accurate supplementary information about individuals generally being required to use the calendar year unless they maintain books on a fiscal year basis."
+  },
+  {
+    "id": "d05",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, an improper tax year is a tax year that does not conform to the permissible tax years outlined in the Internal Revenue Code.\n\nThe context provides a specific example to illustrate this: **\"if a taxpayer began business on March 15 and adopted a tax year ending on March 14 (a period of exactly 12 months), this would be an improper tax year.\"**\n\nThe context further states that **\"Taxpayers that have adopted an improper tax year must change to a proper tax year,\"** and directs readers to see the \"Accounting Periods\" section for a description of permissible tax years.\n\nTo correct an improper tax year, a taxpayer must either:\n- **File an amended income tax return** based on a calendar tax year (attaching a completed Form 1128 with \"FILED UNDER REV. PROC. 85-15\" written at the top), or\n- **File Form 1128** in accordance with form instructions to request IRS approval for a change to a fiscal tax year.",
+    "verdict": "partial",
+    "reason": "The answer correctly identifies what an improper tax year is and provides the same example, but omits the specific detail that Form 1128 is used for both calendar year and fiscal year changes (the reference states 'amended return with Form 1128 for a calendar year, or Form 1128 for a fiscal year'), and adds procedural details about Rev. Proc. 85-15 that, while potentially accurate, go beyond what the reference answer specifies."
+  },
+  {
+    "id": "d06",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, you file **Form 1128** to request IRS approval to change your tax year.\n\nAs stated in passage [1]: *\"Generally, you must file Form 1128 to request IRS approval to change your tax year. See the Instructions for Form 1128 for exceptions. If you qualify for an automatic approval request, a user fee is not required.\"*",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies Form 1128 as the form to file and accurately states that no user fee is required for automatic approval requests, matching the essential facts from the reference answer."
+  },
+  {
+    "id": "d07",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, a **principal partner** is defined as **one who has a 5% or more interest in the profits or capital of the partnership**.\n\nThis definition is relevant in the context of determining a partnership's required tax year. Specifically, if there is no majority interest tax year, the partnership must use the tax year of all its principal partners. (Source: p538.pdf, page 5)",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies the essential fact that a principal partner has a 5% or more interest in the profits or capital of the partnership, matching the reference answer exactly, with additional context that does not contradict the core definition."
+  },
+  {
+    "id": "d08",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, when one or more partners having the **same tax year own a majority interest (more than 50%) in partnership profits and capital**, the partnership must use **the tax year of those partners**.\n\nThis is explicitly stated in the rules for the required tax year for partnerships: *\"If one or more partners having the same tax year own a majority interest (more than 50%) in partnership profits and capital, the partnership must use the tax year of those partners.\"*",
+    "verdict": "correct",
+    "reason": "The answer accurately states that when partners with the same tax year own more than 50% of partnership profits and capital, the partnership must use that tax year, which matches the reference answer exactly."
+  },
+  {
+    "id": "d09",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, specifically from passage [1], the permitted tax years for an S corporation are:\n\n1. **The calendar year**\n2. **A tax year elected under Section 444** of the Internal Revenue Code\n3. **A 52-53-week tax year** ending with reference to the calendar year or a tax year elected under section 444\n4. **Any other tax year for which the corporation establishes a business purpose**\n\nIt is also noted that if an electing S corporation wishes to **adopt a tax year other than a calendar year**, it must request IRS approval using **Form 2553**, instead of filing Form 1128.",
+    "verdict": "correct",
+    "reason": "The answer contains all four essential tax year options from the reference answer (calendar year, section 444 election, 52-53-week year, and business purpose year) with accurate descriptions, and the additional procedural detail about Form 2553 does not contradict the reference answer."
+  },
+  {
+    "id": "d10",
+    "type": "direct",
+    "hit": true,
+    "answer": "## Making a Section 444 Election\n\nBased on the provided context, here is how to make a Section 444 election:\n\n### Filing Requirements\n- Make the election by **filing Form 8716** with the Internal Revenue Service Center where the entity will file its tax return.\n- Attach a copy of Form 8716 to the appropriate tax return (**Form 1065, Form 1120S, or Form 1120**) for the **first tax year** for which the election is made.\n- See the instructions for Form 8716 for specific information on **when to file**.\n\n### Eligibility Requirements\nBefore making the election, the entity must meet **all** of the following:\n- It is **not a member of a tiered structure** (as defined in Treasury Regulations section 1.444-2T)\n- It has **not previously had** a section 444 election in effect\n- It elects a year that meets the **deferral period requirement**\n\n### Back-Up Election (Special Circumstance)\nIf filing a back-up section 444 election, the same general rules apply, but you must type or print **\"BACK-UP ELECTION\"** at the top of Form 8716. If Form 8716 is filed on or after the date Form 1128 (or Form 2553) is filed, you must print **\"FORM 1128 (or FORM 2553) BACK-UP ELECTION\"** at the top of Form 8716.",
+    "verdict": "partial",
+    "reason": "The answer correctly states the essential facts about filing Form 8716 and attaching it to the appropriate tax return for the first tax year, but adds substantial additional information about eligibility requirements and back-up elections that goes beyond the reference answer's scope without being requested."
+  },
+  {
+    "id": "d11",
+    "type": "direct",
+    "hit": true,
+    "answer": "## Required Payment Timing for Partnerships or S Corporations with a Section 444 Election\n\nBased on the provided context, a partnership or S corporation must make a required payment for any tax year when **both** of the following conditions apply:\n\n1. The **section 444 election is in effect**, and\n2. The **required payment for that year (or any preceding tax year) is more than $500**\n\n### Filing Requirements\n\nThe required form is **Form 8752 (Required Payment or Refund Under Section 7519)**, which:\n\n- **Must be filed each year** the section 444 election is in effect, **even if no payment is due**\n- Must be filed and payment made (or zero amount reported) by **May 15th of the calendar year following the calendar year in which the applicable election year begins**\n\n### Specific Payment Rules\n\n| Situation | Requirement |\n|-----------|-------------|\n| Required payment **more than $500** (or prior year payment exceeded $500) | Payment must be made when Form 8752 is filed |\n| Required payment **$500 or less** with no prior year payment required | File Form 8752 showing a **zero amount** |\n\n> *\"Form 8752 must be filed each year the section 444 election is in effect, even if no payment is due.\"* — Publication 538",
+    "verdict": "partial",
+    "reason": "The answer correctly identifies the core requirement (payment when election is in effect and required payment exceeds $500, filed on Form 8752 by May 15), but adds extra details about filing Form 8752 even when no payment is due and the zero-amount reporting requirement that are not mentioned in the reference answer, making it more comprehensive than necessary for evaluation purposes."
+  },
+  {
+    "id": "d12",
+    "type": "direct",
+    "hit": true,
+    "answer": "## Constructive Receipt of Income\n\nBased on the provided context, **constructive receipt** occurs when income is credited to your account or made available to you without restriction — you do not need to have actual possession of it.\n\n### Key Points:\n\n- **Agent rule**: If you authorize someone to act as your agent and receive income on your behalf, you are considered to have received it when your agent receives it.\n\n- **Limitation**: Income is **not** constructively received if your control of its receipt is subject to **substantial restrictions or limitations**.\n\n- **You cannot defer income** by holding checks or postponing taking possession of property from one tax year to another in order to delay paying taxes.\n\n### Example from the Context:\n> A calendar year taxpayer whose bank **credited and made available** interest to their bank account in December 2021 — even if they didn't withdraw it or record it until 2022 — must include that amount in gross income for **2021**, because that is the year it was constructively received.\n\nIn summary, under the **cash method**, you must report income in the year it is received or made available to you **without restriction**, regardless of whether you have physically taken possession of it.\n\n*(Source: p538.pdf, pages 8)*",
+    "verdict": "correct",
+    "reason": "The answer accurately captures the essential definition from the reference answer—that constructive receipt occurs when income is credited or made available without restriction, and is not constructively received when control is subject to substantial restrictions—while providing additional helpful context and examples that do not contradict the reference material."
+  },
+  {
+    "id": "d13",
+    "type": "direct",
+    "hit": true,
+    "answer": "## Gross Receipts Test for Using the Cash Method\n\nBased on the provided context, a corporation or partnership (other than a tax shelter) meets the gross receipts test and can generally use the cash method if its **average annual gross receipts for the 3 prior tax years were $26 million or less** (indexed for inflation).\n\n### How to Calculate Average Annual Gross Receipts:\n1. **Add** the gross receipts for the 3 prior tax years\n2. **Divide** the total by 3\n\n### Additional Rules to Note:\n- **Short tax years**: Gross receipts are annualized\n- **Aggregation rules**: Organizations that are members of an affiliated service group or a controlled group of corporations treated as a single employer must **aggregate their gross receipts** to determine if the test is met\n- **Partnership level**: Generally, a partnership applies the test at the partnership level\n\n### Consequence of Failing the Test:\nIf a corporation or partnership **fails to meet the gross receipts test** for any tax year, it cannot use the cash method and **must change to an accrual method**, effective for that tax year. The entity must file **Form 3115** to request the change.",
+    "verdict": "correct",
+    "reason": "The answer contains all essential facts from the reference answer (the $26 million threshold, the 3-year average requirement, the indexing for inflation, and the applicability to corporations and partnerships excluding tax shelters) and provides accurate additional context without contradicting the reference material."
+  },
+  {
+    "id": "d14",
+    "type": "direct",
+    "hit": true,
+    "answer": "## Function Test for a Qualified Personal Service Corporation (PSC)\n\nBased on the provided context, a corporation meets the **function test** if:\n\n> **At least 95% of its activities are in the performance of services in the fields of:**\n> - Health (including veterinary services)\n> - Law\n> - Engineering (including surveying and mapping)\n> - Architecture\n> - Accounting\n> - Actuarial science\n> - Performing arts\n> - Consulting\n\nIt is important to note that meeting the function test alone is not sufficient — a corporation must **also meet the ownership test** to qualify as a qualified PSC and be eligible to use the cash method of accounting. Additionally, if a corporation **fails to meet the function test** for any tax year, it must change to an accrual method of accounting, effective for the year in which it fails the test.",
+    "verdict": "correct",
+    "reason": "The answer accurately states the 95% threshold and lists all the qualifying service fields mentioned in the reference answer, with no errors or contradictions."
+  },
+  {
+    "id": "d15",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, specifically from passage [2]:\n\nThe all events test for income under an accrual method is met when **both** of the following conditions are satisfied:\n\n1. **All events have occurred which fix your right to receive the income**, and\n2. **You can determine the amount with reasonable accuracy**\n\nHowever, if you have an **Applicable Financial Statement (AFS)**, there is an additional rule — the AFS income inclusion rule — which requires you to include the amount in income **no later than when the item of income is reported in your AFS**. Under this rule, you report income on the **earliest** of the following events:\n\n- When you **receive payment**\n- When the income amount is **due to you**\n- When you **earn** the income\n- When **title passes**\n- When **included as revenue in your AFS** (if you have an AFS)",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies the two essential conditions of the all events test (right to receive income is fixed and amount can be determined with reasonable accuracy) and accurately adds relevant context about the AFS income inclusion rule without contradicting the reference answer."
+  },
+  {
+    "id": "d16",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, specifically from passage [2]:\n\n**Economic performance for interest expense occurs with the passage of time** — that is, as the borrower uses, and the lender forgoes use of, the lender's money — **rather than as payments are made**.",
+    "verdict": "correct",
+    "reason": "The answer accurately captures the essential fact from the reference answer: economic performance for interest expense occurs with the passage of time as the borrower uses the lender's money, not when payments are made."
+  },
+  {
+    "id": "d17",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, specifically from passage [2], an employer can take a current deduction for vacation pay earned by employees under the following conditions:\n\n1. **If paid during the year** – the deduction can be taken in the current tax year, or\n2. **If the amount is vested, within 2½ months after the end of the year** – the deduction can still be taken in the current tax year.\n\nHowever, **if the vacation pay is paid later than these timeframes**, the employer must deduct it in the **year it is actually paid**.\n\nThe context also notes that \"an amount is vested if your right to it cannot be nullified or cancelled.\"",
+    "verdict": "correct",
+    "reason": "The answer accurately captures all essential facts from the reference answer: deduction is allowed if paid during the year or if vested within 2.5 months after year-end, with deduction in the actual payment year otherwise, and includes helpful clarification about what 'vested' means."
+  },
+  {
+    "id": "d18",
+    "type": "direct",
+    "hit": true,
+    "answer": "## FIFO Method Assumption\n\nBased on the provided context, the **FIFO (first-in first-out) method** assumes that:\n\n> *\"the items you purchased or produced first are the first items you sold, consumed, or otherwise disposed of.\"*\n\nAdditionally, under this method, **\"the items in inventory at the end of the tax year are matched with the costs of similar items that you most recently purchased or produced.\"**\n\n### Financial Impact of FIFO\nThe context also notes that during times of **inflation (rising prices)**, FIFO will result in:\n- A **lower cost of goods sold**\n- A **higher closing inventory**\n\nConversely, in times of **falling prices**, the opposite results would hold.",
+    "verdict": "correct",
+    "reason": "The answer accurately captures both essential components of the FIFO assumption: that items purchased/produced first are sold first, and that closing inventory is matched with costs of recently purchased/produced items, with no errors or contradictions."
+  },
+  {
+    "id": "d19",
+    "type": "direct",
+    "hit": true,
+    "answer": "Based on the provided context, to adopt the LIFO method, you must:\n\n**File Form 970** (Application To Use LIFO Inventory Method), **or submit a statement** containing all the information required on Form 970.\n\nYou must file the form (or statement) **with your timely filed tax return for the year in which you first use LIFO**.\n\n*(Source: p538.pdf, page 14)*",
+    "verdict": "correct",
+    "reason": "The answer contains all essential facts from the reference answer: filing Form 970 (or an equivalent statement) with the timely filed tax return for the first year of LIFO use, with no errors or contradictions."
+  },
+  {
+    "id": "d20",
+    "type": "direct",
+    "hit": true,
+    "answer": "## Effect of Trade Discounts on Inventory Cost\n\nBased on the provided context, a trade discount **reduces the cost of inventory**.\n\nSpecifically, the context defines a trade discount as:\n\n> *\"A trade discount is a discount allowed regardless of when the payment is made. Generally, it is for volume or quantity purchases. You must reduce the cost of inventory by a trade (or quantity) discount.\"*\n\n### Key Characteristics of a Trade Discount:\n- It is allowed **regardless of when payment is made**\n- It is **generally given for volume or quantity purchases**\n- Reducing inventory cost by this discount is **mandatory** (the passage uses the word \"must\")\n\nThis is distinct from a **cash discount**, which is a reduction in price for paying within a prescribed time period, and for which a business has a **choice** of either deducting it or including it in income (though it must be treated consistently year to year).",
+    "verdict": "correct",
+    "reason": "The answer accurately captures the essential fact that trade discounts reduce the cost of inventory and includes the key detail that this reduction is mandatory, matching the reference answer's core information."
+  },
+  {
+    "id": "r01",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "## Fiscal Year\n\nBased on the provided context, your company is using a **fiscal year** accounting period.\n\nAccording to the document (p538.pdf, page 2):\n\n> *\"A fiscal year is 12 consecutive months ending on the last day of any month except December 31st.\"*\n\nSince your company closes its books on **June 30**, this fits the definition exactly — it is a 12-month period ending on the last day of a month other than December. The context also notes that if you adopt a fiscal year, you must:\n\n- **Consistently maintain your books and records**, and\n- **Report your income and expenses** using the time period adopted.",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies the accounting period as a fiscal year and accurately describes it as 12 consecutive months ending on a day other than December 31st, which matches the reference answer's essential facts."
+  },
+  {
+    "id": "r02",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "Based on the provided context, specifically Example 2 from passage [1]:\n\n**\"A calendar year corporation dissolved on July 23. The corporation's final return will cover the short period from January 1 through July 23.\"**\n\nApplying this same principle to your scenario, a company following the January–December (calendar) year that shuts down permanently in late July would file a **short period tax return** covering **January 1 through the date it dissolved in late July**.",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies that the final return covers a short period from January 1 through the date of dissolution in late July, which matches the essential facts in the reference answer."
+  },
+  {
+    "id": "r03",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "Based on the provided context, the deadline for submitting your uncle's final tax return is the **15th day of the 4th month after the close of his regular tax year**.\n\nAdditionally, the context provides the following relevant details:\n\n- His final return will be a **short period tax return** that begins on **January 1st** and ends on the **date of his death**.\n- If the due date happens to fall on a **Saturday, Sunday, or legal holiday**, the return should be filed by the **next business day**.\n- The filing of the return and payment of tax **may be made as though the decedent had lived throughout his last taxable year**.\n\nSince most individuals use a calendar tax year, this would typically mean the deadline would be **April 15th** of the following year, though the context does not explicitly state this — it only references the \"15th day of the 4th month after the close of the individual's regular tax year.\"",
+    "verdict": "correct",
+    "reason": "The answer accurately captures all essential facts from the reference: the deadline of the 15th day of the 4th month after the close of the regular tax year, the weekend/holiday adjustment, and that the final return covers January 1 to the date of death, with appropriate caveats about calendar year assumptions."
+  },
+  {
+    "id": "r04",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "Based on the provided context, you must declare the interest for **December's tax year** (the year the bank credited it), not January.\n\nThe context clearly explains this through the **constructive receipt** rule:\n\n> *\"Your bank credited, and made available, interest to your bank account in December 2021. You did not withdraw it or enter it into your books until 2022. You must include the amount in gross income for 2021, the year you constructively received the interest income.\"*\n\nThe key principle is that income is considered received when it is **credited and made available to you**, regardless of when you actually notice or withdraw it. As the context states:\n\n> *\"You must report the income in the year the property is received or **made available to you without restriction**.\"*\n\nSince the bank made the interest available to you in December without any restrictions, that is the tax year in which it must be declared — even though you only noticed it in January.",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies that interest should be declared in December's tax year based on the constructive receipt rule, which states that income is taxable when credited and made available, not when actually withdrawn or noticed."
+  },
+  {
+    "id": "r05",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "Based on the provided context, **no, you cannot deduct the entire amount in the first year** for a three-year business insurance contract.\n\nThe context directly addresses this scenario in **Example 1 from p538.pdf, page 9**:\n\n> *\"You are a calendar year taxpayer and pay $3,000 in 2021 for a business insurance policy that is effective for 3 years (36 months), beginning on July 1, 2021. The general rule that an expense paid in advance is deductible only in the year to which it applies is applicable to this payment **because the payment does not qualify for the 12-month rule.**\"*\n\nThe deduction must be spread out proportionally over the life of the policy. Using the example's formula:\n- **Year 1:** 6/36 of the total\n- **Year 2:** 12/36 of the total\n- **Year 3:** 12/36 of the total\n- **Year 4:** 6/36 of the total\n\nThe reason the full amount **cannot** be deducted in year one is that a three-year policy **fails to meet the 12-month rule**, which only applies when the benefit does not extend beyond either **12 months** after it begins or the **end of the following tax year**.",
+    "verdict": "correct",
+    "reason": "The answer correctly states that the full amount cannot be deducted in the first year and accurately explains that the cost must be spread over the years covered by the policy, consistent with the reference answer's core principle."
+  },
+  {
+    "id": "r06",
+    "type": "reformulation",
+    "hit": false,
+    "answer": "Based on the provided context, under the accrual method, you would deduct the expense in **December** (the year you incurred it), not January when you actually paid it.\n\nThis is directly supported by passage [1], which states:\n\n> *\"Under the accrual method, you generally report income in the tax year you earn it, regardless of when payment is received. You deduct expenses in the tax year you incur them, **regardless of when payment is made**.\"*\n\nSince you received the pens, paper, and the bill in December, that is when the expense was **incurred**, making December's tax year the appropriate year to claim the deduction — even though payment was not made until January.",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies that the expense should be claimed in December under accrual accounting, matching the reference answer's conclusion that the cost is claimed in the year received, and accurately explains the accrual principle that expenses are deducted when incurred rather than when paid."
+  },
+  {
+    "id": "r07",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "Based on the provided context, **LIFO (Last-In, First-Out)** will produce a **lower closing inventory** value during times of rising prices (inflation).\n\nAs stated directly in the context:\n\n> *\"of inflation, when prices are rising, LIFO will produce a larger cost of goods sold and a lower closing inventory. Under FIFO, the cost of goods sold will be lower and the closing inventory will be higher.\"*\n\nSo in a period of rising prices:\n- **LIFO** → larger cost of goods sold + **smaller ending inventory value**\n- **FIFO** → smaller cost of goods sold + larger ending inventory value",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies LIFO as the costing method that produces a smaller ending stock value during inflation, and accurately explains that LIFO results in larger COGS and lower closing inventory compared to FIFO."
+  },
+  {
+    "id": "r08",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "Based on the provided context, for goods that cannot be sold at normal prices due to damage, imperfections, or changes of style, the valuation rule is clearly addressed in the first passage:\n\n**You should value these goods at their bona fide selling price minus the direct cost of disposition**, regardless of which inventory valuation method you use for the rest of your inventory.\n\nThe context specifically lists your exact situations — **damage** (scratches) and **changes of style** (out of fashion) — as examples of goods that fall under this special valuation rule.\n\nAdditionally, there is one important limitation to keep in mind: **you cannot value these goods for less than their scrap value**.",
+    "verdict": "correct",
+    "reason": "The answer accurately captures all essential facts from the reference: valuing scratched/out-of-fashion goods at bona fide selling price minus direct cost of disposition, and the floor limitation of scrap value, with no errors or contradictions."
+  },
+  {
+    "id": "r09",
+    "type": "reformulation",
+    "hit": false,
+    "answer": "Based on the provided context passages, I cannot directly answer this question. The passages from Publication 538 cover topics such as tax years, accounting methods, constructive receipt of income, and the Taxpayer Advocate Service, but **none of them specifically address whether IRS permission is required to correct an arithmetic mistake in your books**.\n\nTherefore, I cannot provide an accurate answer to your question based solely on the given context.",
+    "verdict": "incorrect",
+    "reason": "The answer refuses to provide information and claims lack of context, but the reference answer clearly states that correcting arithmetic mistakes does not require IRS approval—this is a straightforward factual answer that should have been provided."
+  },
+  {
+    "id": "r10",
+    "type": "reformulation",
+    "hit": true,
+    "answer": "## Answer\n\nBased on the provided context, a self-employed painter (artist) would likely be **exempt** from the uniform capitalization rules that would otherwise require her to add costs to the value of her created property rather than deducting them.\n\nThe context specifically states that **\"qualified creative expenses\"** are exempt from the uniform capitalization rules, and these are defined as:\n\n> *\"expenses paid or incurred by a freelance (self-employed) writer, photographer, or artist whose personal efforts create (or can reasonably be expected to create) certain properties.\"*\n\nFurthermore, **an artist** is specifically defined in the context as:\n\n> *\"an individual who creates a picture, painting, sculpture, statue, etching, drawing, cartoon, graphic design, or original print item. The originality and uniqueness of the item created and the predominance of aesthetic value over utilitarian value of the item created are taken into account.\"*\n\nA self-employed painter would appear to fit this definition, meaning her qualified creative expenses would **not** be subject to the uniform capitalization rules.\n\n**However, one important caveat** from the context: qualified creative expenses **do not include** expenses related to *\"printing, photographic plates, motion picture films, video tapes, or similar items.\"* Canvases and paint do not appear to fall into those excluded categories.",
+    "verdict": "correct",
+    "reason": "The answer correctly identifies that self-employed painters are exempt from uniform capitalization rules for qualified creative expenses, provides accurate supporting definitions from tax law, and properly notes that canvas and paint expenses fall within the exemption rather than excluded categories."
+  },
+  {
+    "id": "m01",
+    "type": "multi",
+    "hit": false,
+    "answer": "## Cash Method vs. Accrual Method for Reporting Income\n\nBased on the provided context, here are the key differences between the two methods:\n\n### Cash Method\n> *\"Under the cash method, you include in your gross income all items of income you actually or constructively received during the tax year.\"*\n\n- Income is reported in the **tax year you receive it**\n- Income is considered \"constructively received\" when it is **credited to your account or made available to you without restriction**, even without physical possession\n\n### Accrual Method\n> *\"Under the accrual method, you generally report income in the tax year you earn it, regardless of when payment is received.\"*\n\n- Income is reported in the **tax year you earn it**, even if payment hasn't been received yet\n\n---\n\n### Key Distinction\nThe fundamental difference is **timing**:\n- **Cash method** = report when money is **received**\n- **Accrual method** = report when money is **earned**\n\n### Additional Notes\n- If you use the **cash method for reporting income**, you must also use the cash method for reporting **expenses**\n- If you use an **accrual method for reporting expenses**, you must also use an accrual method for **figuring income**",
+    "verdict": "correct",
+    "reason": "The answer accurately captures the essential distinction from the reference answer: cash method reports income when actually or constructively received, while accrual method reports income when earned (the all events test), regardless of payment timing. The additional details about constructive receipt and consistency requirements are accurate and supplementary rather than contradictory."
+  },
+  {
+    "id": "m02",
+    "type": "multi",
+    "hit": true,
+    "answer": "## Methods for Identifying the Cost of Inventory Items\n\nAccording to the context, the following methods can be used to **identify the cost** of items in inventory:\n\n1. **Specific Identification Method** – Used when you can identify and match the actual cost to specific items in inventory.\n2. **FIFO (First-In First-Out) Method** – Assumes items purchased or produced first are the first ones sold, consumed, or disposed of.\n3. **LIFO (Last-In First-Out) Method** – Assumes items purchased or produced last are the first ones sold, consumed, or disposed of.\n\n> The FIFO or LIFO method should be used if you cannot specifically identify items with their costs, or if the same type of goods are intermingled in inventory and cannot be identified with specific invoices.\n\n---\n\n## Methods for Valuing Inventory\n\nThe following methods are available for **valuing inventory**:\n\n1. **Cost**\n2. **Lower of Cost or Market**\n3. **Retail**\n\n> It is also noted that goods that **cannot be sold** at normal prices (due to damage, imperfections, style changes, etc.) should be valued at their *bona fide selling price minus direct cost of disposition*, regardless of which valuation method is used for the rest of the inventory.",
+    "verdict": "correct",
+    "reason": "The answer accurately identifies all three cost identification methods (specific identification, FIFO, LIFO) and all three valuation methods (cost, lower of cost or market, retail) that are in the reference answer, with no errors or contradictions."
+  },
+  {
+    "id": "m03",
+    "type": "multi",
+    "hit": false,
+    "answer": "## How a Partnership Can Avoid Using Its Required Tax Year\n\nBased on the provided context, a partnership can avoid using its required tax year through the following options:\n\n### 1. Section 444 Election\nThe partnership can make an **election under section 444** of the Internal Revenue Code to have a tax year other than a required tax year by filing **Form 8716**.\n\n### 2. 52-53-Week Tax Year Election\nThe partnership can elect to use a **52-53-week tax year** that ends with reference to either its required tax year or a tax year elected under section 444. A newly formed partnership can adopt this without IRS approval, but if an existing partnership wishes to *change* to or from a 52-53-week tax year, it must file **Form 1128** to request IRS approval.\n\n### 3. Business Purpose Tax Year\nThe partnership can establish a **business purpose** for a different tax year by filing **Form 1128**.\n\n---\n\n### Summary Table\n\n| Option | Form Required |\n|--------|--------------|\n| Section 444 Election | Form 8716 |\n| 52-53-Week Tax Year (change) | Form 1128 |\n| Business Purpose Tax Year | Form 1128 |\n\n> These options are explicitly outlined in the context passages from Publication 538 (January 2022).",
+    "verdict": "correct",
+    "reason": "The answer accurately identifies all three methods (section 444 election with Form 8716, 52-53-week tax year, and business purpose with Form 1128) and correctly associates each with the appropriate form, matching the essential facts from the reference answer."
+  },
+  {
+    "id": "m04",
+    "type": "multi",
+    "hit": true,
+    "answer": "## Computing the Average Markup Percentage\n\nAccording to the context, the average markup percentage is computed by following these steps:\n\n1. **Add** the total retail selling prices of goods in the opening inventory plus the retail selling prices of goods purchased during the year (adjusted for all markups and markdowns)\n2. **Subtract** from that total the cost of goods in opening inventory plus the cost of goods purchased during the year\n3. **Divide** the balance from step 2 by the total selling price from step 1\n\n### In the IRS Example:\n- The **markup of $35,000** is the difference between the total cost (**$105,000**) and the total retail value (**$140,000**)\n- Dividing $35,000 ÷ $140,000 = **25% markup percentage**\n\n---\n\n## Computing Closing Inventory at Cost\n\nUsing the example figures provided:\n\n| Item | Retail Value |\n|------|-------------|\n| Closing inventory at retail | **$42,000** |\n| Minus: Markup (25% × $42,000) | **$10,500** |\n| **Closing inventory at cost** | **$31,500** |\n\nThe closing inventory at cost in the IRS example is **$31,500**, arrived at by subtracting the markup in closing inventory ($10,500) from the closing inventory at retail ($42,000).",
+    "verdict": "correct",
+    "reason": "The answer accurately describes the average markup percentage computation (markup divided by retail value = 35,000/140,000 = 25%) and correctly calculates the closing inventory at cost ($42,000 - $10,500 = $31,500), matching all essential facts from the reference answer."
+  },
+  {
+    "id": "m05",
+    "type": "multi",
+    "hit": true,
+    "answer": "## Recurring Item Exception to Economic Performance\n\n### When a Recurring Expense Can Be Deducted Early\n\nBased on the provided context, a recurring item can be treated as incurred during the tax year **even though economic performance has not occurred** if **all** of the following requirements are met:\n\n1. **The all-events test is met** (all events have occurred that fix the fact of liability, and the liability can be determined with reasonable accuracy)\n2. **Economic performance occurs by the earlier of:**\n   - 8½ months after the close of the tax year, **or**\n   - The date a timely return (including extensions) is filed for the year\n3. **The item is recurring in nature** and similar items are consistently treated as incurred in the tax year in which the all-events test is met\n4. **Either:**\n   - The item is not material, **or**\n   - Accruing the item in the year the all-events test is met results in a **better match against income** than accruing it in the year of economic performance\n\n---\n\n### Does This Exception Cover Workers' Compensation?\n\n**No.** The context explicitly states:\n\n> *\"This exception does not apply to workers' compensation or tort liabilities.\"*\n\nTherefore, workers' compensation and tort liabilities are specifically **excluded** from the recurring item exception, and economic performance for those liabilities occurs only as payments are actually made.",
+    "verdict": "correct",
+    "reason": "The answer accurately identifies all four requirements for the recurring expense exception, correctly states the 8.5 months/filing date timing rule, and properly confirms that workers' compensation is excluded from this exception with economic performance occurring as payments are made."
+  },
+  {
+    "id": "o01",
+    "type": "out_of_scope",
+    "hit": null,
+    "answer": "I cannot answer this question based on the given context. The provided passages are exclusively from IRS Publication 538, which covers **U.S. accounting periods and methods**. There is no information about French corporate income tax rates or any other country's tax system in the provided context.",
+    "verdict": "correct",
+    "reason": "The answer appropriately refuses to provide information about French corporate income tax rates, citing lack of relevant context, which aligns with the ABSTAIN reference answer."
+  },
+  {
+    "id": "o02",
+    "type": "out_of_scope",
+    "hit": null,
+    "answer": "Based on the provided context passages, I cannot answer this question. The passages exclusively contain information about **U.S. federal tax procedures** from IRS Publication 538, covering topics such as short tax years, section 444 elections, tax payment options, and IRS online tools. There is **no information about VAT (Value Added Tax) returns or United Kingdom tax procedures** in any of the provided passages.",
+    "verdict": "correct",
+    "reason": "The answer appropriately refuses to provide information due to lack of relevant context, which aligns with the ABSTAIN reference answer by explicitly declining to answer rather than providing potentially inaccurate information."
+  },
+  {
+    "id": "o03",
+    "type": "out_of_scope",
+    "hit": null,
+    "answer": "Based on the provided context passages, I cannot answer this question. The passages discuss topics such as tax years, accounting periods, inventory losses, recurring item exceptions, and partnership tax year determinations, but they do not contain any information about **MACRS (Modified Accelerated Cost Recovery System) recovery periods** for business vehicles or any other assets.",
+    "verdict": "correct",
+    "reason": "The answer appropriately refuses to answer the question by explicitly stating lack of information, which aligns with the ABSTAIN reference answer."
+  },
+  {
+    "id": "o04",
+    "type": "out_of_scope",
+    "hit": null,
+    "answer": "Based on the provided context passages, I cannot answer this question. The passages are exclusively from IRS Publication 538, which covers **Accounting Periods and Methods** (such as cash vs. accrual accounting methods, tax years, and expense deductions). There is no information about 401(k) contribution limits in any of the provided passages.",
+    "verdict": "correct",
+    "reason": "The answer appropriately refuses to answer due to lack of information in the provided context, which aligns with the ABSTAIN reference answer."
+  },
+  {
+    "id": "o05",
+    "type": "out_of_scope",
+    "hit": null,
+    "answer": "I cannot answer this question based on the given context. The provided passages are exclusively from IRS Publication 538, which covers accounting periods and methods, taxpayer rights, and related tax topics. There is no information about the capital of Peru or any geographical topics in these passages.",
+    "verdict": "correct",
+    "reason": "The answer appropriately refuses to provide information and explicitly cites lack of relevant context as the reason, which aligns with the ABSTAIN reference answer."
+  }
+]
