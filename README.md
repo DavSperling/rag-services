@@ -1,6 +1,6 @@
 # RAG Services 🚀
 
-An end-to-end, production-grade **Retrieval-Augmented Generation (RAG)** system built with Python. This project implements a complete pipeline: PDF document parsing and preprocessing, sliding-window chunking with source/page traceability, dense vector embeddings, vector storage and HNSW indexing in PostgreSQL via `pgvector`, semantic search powered by a **Cross-Encoder Reranking layer**, grounded answer synthesis with Anthropic Claude, containerized FastAPI REST services via Docker Compose, and a rigorous automated evaluation harness featuring a calibrated **LLM-as-a-judge**.
+An end-to-end, production-ready **Retrieval-Augmented Generation (RAG)** system built with Python. This project implements a complete, measured pipeline: PDF document ingestion and preprocessing, sliding-window chunking with source/page traceability, dense vector embeddings, vector storage and HNSW indexing in PostgreSQL via `pgvector`, a two-stage retrieval pipeline with a **Cross-Encoder Reranking layer**, grounded answer synthesis with Anthropic Claude, containerized FastAPI REST services via Docker Compose, and a rigorous automated evaluation harness featuring a calibrated **LLM-as-a-judge**.
 
 ---
 
@@ -11,10 +11,10 @@ An end-to-end, production-grade **Retrieval-Augmented Generation (RAG)** system 
 - **Vector Database**: [PostgreSQL 16](https://www.postgresql.org/) with [pgvector](https://github.com/pgvector/pgvector) extension
 - **Database Driver**: [psycopg 3](https://www.psycopg.org/psycopg3/) with native `pgvector` support
 - **PDF Extraction**: [pypdf](https://pypdf.readthedocs.io/)
-- **Dense Embeddings**: [sentence-transformers](https://www.sbert.net/) (`BAAI/bge-small-en-v1.5`, 384 dimensions)
-- **Reranker**: Cross-Encoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`)
-- **Generation LLM**: Claude 3.7 Sonnet (`claude-sonnet-4-6`)
-- **Evaluation Judge**: Claude 3.5 Haiku (`claude-haiku-4-5`)
+- **Dense Embeddings (Bi-Encoder)**: [sentence-transformers](https://www.sbert.net/) (`BAAI/bge-small-en-v1.5`, 384 dimensions)
+- **Reranker (Cross-Encoder)**: [sentence-transformers](https://www.sbert.net/) (`cross-encoder/ms-marco-MiniLM-L-6-v2`)
+- **Generation LLM**: Claude Sonnet 4.6 (`claude-sonnet-4-6`)
+- **Evaluation Judge**: Claude Haiku 4.5 (`claude-haiku-4-5`)
 - **Containerization**: Docker & Docker Compose
 - **Testing**: [pytest](https://docs.pytest.org/)
 
@@ -25,11 +25,11 @@ An end-to-end, production-grade **Retrieval-Augmented Generation (RAG)** system 
 ```text
 rag-services/
 ├── app/
-│   └── main.py             # FastAPI REST application (routes: /health, /ingest, /query)
-├── data/                   # Source documents (e.g., IRS Publication 538 p538.pdf)
+│   └── main.py             # FastAPI REST application (endpoints: /health, /ingest, /query)
+├── data/                   # Raw source documents (e.g., IRS Publication 538 p538.pdf)
 ├── eval/
 │   ├── questions.jsonl     # Benchmark dataset of 40 annotated questions
-│   └── results/            # Timestamped evaluation reports (.json)
+│   └── results/            # Timestamped evaluation benchmark reports (.json)
 ├── scripts/
 │   ├── check_db.py         # PostgreSQL connectivity and pgvector validation script
 │   ├── check_evidence.py   # Text normalization and ground-truth evidence verification
@@ -39,7 +39,7 @@ rag-services/
 │   ├── generate.py         # Strict prompt engineering and Claude synthesis pipeline
 │   ├── init_db.py          # Table creation and HNSW index initialization
 │   ├── ingest.py           # End-to-end ingestion: parse -> chunk -> embed -> upsert
-│   ├── rerank.py           # Cross-Encoder Reranking layer (top 20 -> top 5)
+│   ├── rerank.py           # Cross-Encoder Reranking layer (top 20 candidates -> top 5)
 │   ├── schema.sql          # PostgreSQL DDL schema with HNSW cosine index
 │   └── search.py           # Semantic similarity search using pgvector
 ├── Dockerfile              # Docker container configuration for FastAPI service
@@ -64,6 +64,7 @@ rag-services/
   `"Represent this sentence for searching relevant passages: "`.
 
 ### 3. Database Schema & Vector Indexing (`scripts/schema.sql` & `scripts/init_db.py`)
+- Enables `pgvector` via `CREATE EXTENSION IF NOT EXISTS vector;`.
 - `chunks` table stores text content, source metadata, page numbers, chunk indices, and a `vector(384)` column.
 - Idempotent upsert constraint: `UNIQUE (source, chunk_index)`.
 - **HNSW Index**: Built using `vector_cosine_ops` (`USING hnsw (embedding vector_cosine_ops)`) enabling sub-millisecond approximate nearest neighbor (ANN) retrieval.
@@ -81,8 +82,8 @@ rag-services/
   ```
 
 ### 6. Cross-Encoder Reranking Layer (`scripts/rerank.py`)
-- `rerank(question, candidates, top_k=5)`: Receives the top-20 candidate passages from initial vector search and scores each `(query, passage)` pair simultaneously using a dedicated Cross-Encoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`).
-- Unlike bi-encoders that process queries and documents independently, the Cross-Encoder leverages cross-attention across tokens, identifying nuanced semantic matches and promoting relevant evidence into the top 5.
+- `rerank(question, candidates, top_k=5)`: Receives candidate passages (default: top 20 from initial vector search) and scores each `(query, passage)` pair simultaneously using a dedicated Cross-Encoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`).
+- Unlike bi-encoders that process queries and documents independently, the Cross-Encoder leverages full cross-attention across tokens, identifying nuanced semantic matches and promoting relevant evidence into the top 5.
 
 ### 7. Grounded Answer Synthesis (`scripts/generate.py`)
 - `build_prompt(question, chunks)`: Formats retrieved chunks with bracketed identifiers `[i] source, page` alongside strict anti-hallucination instructions.
@@ -94,11 +95,11 @@ rag-services/
   - Three verdicts: `correct`, `partial`, `incorrect`.
   - Special `ABSTAIN` rule for off-topic questions.
   - Length bias mitigation: ensures additional accurate context beyond the reference answer is never penalized.
-  - Structured JSON output with one-sentence justification.
+  - Resilient verdict extraction: prioritizes `incorrect` detection to avoid substring false positives (`"correct"` in `"incorrect"`).
 
 ---
 
-## 📊 Benchmark Results & Empirical Improvements
+## 📊 Benchmark Results & Empirical Measurements
 
 Evaluated against a curated dataset of **40 questions**: 20 direct questions, 10 reformulated questions, 5 multi-passage questions, and 5 out-of-scope questions (`out_of_scope`).
 
@@ -108,16 +109,35 @@ Evaluated against a curated dataset of **40 questions**: 20 direct questions, 10
 | **2. Calibrated Judge** | 31/35 (88.6 %) | **34/35 (97.1 %)** | 0/35 | 5/5 (100 %) | 0 questions |
 | **3. With Cross-Encoder Reranking** | **32/35 (91.4 %)** | **34/35 (97.1 %)** | 0/35 | 5/5 (100 %) | 0 questions |
 
-### Key Takeaways:
-- **Recall@5 Gain**: The Cross-Encoder lifted Recall@5 from **88.6% to 91.4%**, successfully elevating the second required chunk for multi-passage question `m03` from rank 12 into the top 5.
-- **Precision**: **100% abstention rate** on out-of-scope questions (`o01`–`o05`), with zero hallucinated answers.
-- **Alignment**: **0 discrepancies** between retrieval success and answer correctness.
+### Latency Measurements (Measured on Apple Silicon / CPU)
+- **Dense Vector Search (`pgvector`, $k=20$)**: **~1.5 ms**
+- **Cross-Encoder Reranker (`ms-marco-MiniLM-L-6-v2`, 20 pairs)**: **~212 ms**
+- **LLM Generation (`claude-sonnet-4-6`)**: **~1,200 ms**
+- **Total Pipeline Latency**:
+  - Without Reranking: **~1.2 s**
+  - With Reranking: **~1.4 s** (+17% end-to-end latency for +2.8% recall gain)
+
+---
+
+## 🔍 In-Depth Failure Analysis & Trade-offs
+
+### 1. Why didn't the Reranker save `r09`?
+- **Question**: *"I found an arithmetic mistake in my books. Do I need the tax authority's permission to fix it?"*
+- **Target Passage**: *"Approval not required... Correction of a math or posting error"* (from chunk 10 in pgvector).
+- **Outcome**: The Cross-Encoder lifted the target chunk from rank 10 to **rank 8**, but it missed the top 5 cutoff.
+- **Root Cause**: The query words *"permission"* and *"books"* matched heavily against chunks #1 through #7 that extensively discuss *"obtain approval from the IRS to change it"*, *"tax returns"*, and *"books and records"*. Furthermore, the semantic gap between the query's *"arithmetic mistake"* and the document's formal phrasing *"math or posting error"* led the model to favor higher-frequency accounting change passages.
+
+### 2. The Case of `r06` (The Limits of Vector Retrieval)
+- **Question**: *"I received pens and paper plus the bill in December but settled it in January. Using accrual accounting, which year do I claim the cost?"*
+- **Outcome**: Target passage was ranked **#35** by pgvector, completely outside the top 20 candidate pool passed to the reranker.
+- **Root Cause**: The query uses a concrete, colloquial scenario (*"pens and paper"*), whereas the IRS publication describes abstract legal tests (*"all-events test"*, *"economic performance"*). A Bi-Encoder trained on general text struggled to map this concrete example to the statutory text.
+- **Mitigating Factor**: Even though `hit=False`, Claude Sonnet 4.6 correctly deduced the answer (*"December"*) from general accrual accounting principles retrieved in chunk #1, earning a `correct` verdict from the judge.
 
 ---
 
 ## 🐳 Docker & Docker Compose Deployment
 
-The entire system is containerized for seamless reproducibility.
+The entire system is containerized for zero-setup execution.
 
 ### 1. Launch the Stack
 
@@ -126,13 +146,12 @@ docker compose up -d --build
 ```
 
 This starts:
-- **`db`**: PostgreSQL 16 with `pgvector` on host port **`5440`** with integrated health checks (`pg_isready`).
-- **`api`**: Containerized FastAPI service on host port **`8000`** with mounted `/app/data` volume.
+- **`db`**: PostgreSQL 16 with `pgvector` on host port **`5440`**, with automatic schema initialization via `./scripts/schema.sql:/docker-entrypoint-initdb.d/init.sql:ro` and health checks (`pg_isready`).
+- **`api`**: Containerized FastAPI service on host port **`8000`** with mounted `/app/data` volume, configured to connect to `postgresql://rag:rag@db:5432/rag`.
 
 ### 2. Verify Service Health
 
 ```bash
-docker compose ps
 curl http://localhost:8000/health
 ```
 
@@ -154,11 +173,11 @@ Expected response:
   ```
   *Response*: `{"chunks": 70}`
 
-- **`POST /query`**: Performs semantic search, synthesizes a grounded response, and returns cited sources with similarity scores.
+- **`POST /query`**: Performs semantic search with optional reranking, synthesizes a grounded response, and returns cited sources with similarity scores.
   ```bash
   curl -X POST http://localhost:8000/query \
     -H "Content-Type: application/json" \
-    -d '{"question": "What is a fiscal year?", "k": 5}'
+    -d '{"question": "What is a fiscal year?", "k": 5, "rerank": true}'
   ```
 
 ---

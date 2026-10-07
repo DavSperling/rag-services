@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from scripts.ingest import ingest
 from fastapi import FastAPI, HTTPException
 from scripts.search import search 
+from scripts.rerank import rerank
 from scripts.generate import build_prompt, generate
 
 load_dotenv()
@@ -21,6 +22,7 @@ class IngestRequest(BaseModel):
 class QueryRequest(BaseModel):
     question: str
     k: int = 5
+    rerank: bool = True
 
 @app.get("/health")
 def health():
@@ -47,13 +49,18 @@ def ingest_route(req: IngestRequest):
 
 @app.post("/query")
 def query_route(req: QueryRequest):
-    chunks = search(req.question, k=req.k)
+    if req.rerank:
+        candidates = search(req.question, k=max(20, req.k))
+        chunks = rerank(req.question, candidates, top_k=req.k)
+    else:
+        chunks = search(req.question, k=req.k)
+
     if not chunks:
-        return {"there is no chunks ":"" }
+        return {"answer": "No relevant chunks found.", "sources": []}
     prompt = build_prompt(req.question, chunks)
     answer = generate(prompt)
     sources = [
-    {"source": c[1], "page": c[2], "similarity": round(float(c[3]), 4)}
-    for c in chunks
+        {"source": c[1], "page": c[2], "similarity": round(float(c[3]), 4)}
+        for c in chunks
     ]
     return {"answer": answer, "sources": sources}

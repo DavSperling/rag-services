@@ -60,12 +60,34 @@ Answer to evaluate: {answer}"""
             text = text[4:]
         text = text.strip()
 
+    # 1. Tentative de décodage JSON direct
     try:
-        return json.loads(text)
+        data = json.loads(text)
+        if isinstance(data, dict) and "verdict" in data:
+            v = str(data["verdict"]).lower().strip()
+            if v in ("correct", "partial", "incorrect"):
+                return {"verdict": v, "reason": data.get("reason", "")}
     except json.JSONDecodeError:
-        match = re.search(r'"verdict"\s*:\s*"([^"]+)"', text)
-        verdict = match.group(1) if match else ("correct" if "correct" in text.lower() else "partial")
-        return {"verdict": verdict, "reason": text}
+        pass
+
+    # 2. Extraction par regex stricte sur la clé verdict
+    match = re.search(r'"verdict"\s*:\s*"(correct|partial|incorrect)"', text, re.IGNORECASE)
+    if match:
+        reason_match = re.search(r'"reason"\s*:\s*"([^"]+)"', text)
+        reason = reason_match.group(1) if reason_match else text
+        return {"verdict": match.group(1).lower(), "reason": reason}
+
+    # 3. Fallback avec frontières de mots (\b) : tester 'incorrect' EN PREMIER !
+    # (En Python, "correct" in "incorrect" vaut True, ce qui transformait les échecs en succès)
+    lower = text.lower()
+    if re.search(r"\bincorrect\b", lower):
+        return {"verdict": "incorrect", "reason": text}
+    if re.search(r"\bpartial\b", lower):
+        return {"verdict": "partial", "reason": text}
+    if re.search(r"\bcorrect\b", lower):
+        return {"verdict": "correct", "reason": text}
+
+    return {"verdict": "incorrect", "reason": text}
 
 
 if __name__ == "__main__":
