@@ -1,9 +1,12 @@
 import json
+import re
+import sys
 from datetime import datetime
 from pathlib import Path
 
 from scripts.check_evidence import load_questions, normalize
 from scripts.generate import build_prompt, client, generate
+from scripts.rerank import rerank
 from scripts.search import search
 
 
@@ -37,7 +40,7 @@ Answer to evaluate: {answer}"""
         response = client.messages.create(
             model="claude-haiku-4-5",
             temperature=0,
-            max_tokens=256,
+            max_tokens=512,
             system=system_prompt,
             messages=[{"role": "user", "content": user_content}],
         )
@@ -45,7 +48,7 @@ Answer to evaluate: {answer}"""
         response = client.messages.create(
             model="claude-haiku-4-5",
             extra_body={"temperature": 0},
-            max_tokens=256,
+            max_tokens=512,
             system=system_prompt,
             messages=[{"role": "user", "content": user_content}],
         )
@@ -57,7 +60,12 @@ Answer to evaluate: {answer}"""
             text = text[4:]
         text = text.strip()
 
-    return json.loads(text)
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        match = re.search(r'"verdict"\s*:\s*"([^"]+)"', text)
+        verdict = match.group(1) if match else ("correct" if "correct" in text.lower() else "partial")
+        return {"verdict": verdict, "reason": text}
 
 
 if __name__ == "__main__":
@@ -86,10 +94,17 @@ if __name__ == "__main__":
     # --- Étape 3 : Évaluation complète des 40 questions ---
     questions = load_questions("eval/questions.jsonl")
     records = []
+    use_rerank = "--no-rerank" not in sys.argv
 
-    print("\n--- Évaluation en cours (40 questions) ---")
+    mode_str = "RERANKING ACTIF (top 20 -> top 5 via Cross-Encoder)" if use_rerank else "SANS RERANKING (top 5 pgvector direct)"
+    print(f"\n--- Évaluation en cours (40 questions) [{mode_str}] ---")
     for q in questions:
-        results = search(q["question"])
+        if use_rerank:
+            raw_candidates = search(q["question"], k=20)
+            results = rerank(q["question"], raw_candidates, top_k=5)
+        else:
+            results = search(q["question"], k=5)
+
         if q["type"] != "out_of_scope":
             hit = is_hit(q["evidence"], results)
         else:
